@@ -1,3 +1,5 @@
+# Do NOT use this file on the large input, it's just for helping find the small scale solutions
+
 def path(grid, depth, index):
     if depth == len(grid):
         return 1
