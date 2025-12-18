@@ -32,6 +32,8 @@ The total output joltage is the sum of the maximum joltage from each bank, so in
 
 There are many batteries in front of you. Find the maximum joltage possible from each bank; *what is the total output joltage?*
 
+[Puzzle Input](./input)
+
 [Part 1 puzzle answer](#part-1-puzzle-answer)
 
 ## --- Part Two ---

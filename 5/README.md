@@ -41,6 +41,8 @@ So, in this example, `3` of the available ingredient IDs are fresh.
 
 Process the database file from the new inventory management system. *How many of the available ingredient IDs are fresh?*
 
+[Puzzle Input](./input)
+
 [Part 1 puzzle answer](#part-1-puzzle-answer)
 
 ## --- Part Two ---

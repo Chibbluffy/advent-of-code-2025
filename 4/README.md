@@ -46,6 +46,8 @@ x.x.@@@.x.
 
 Consider your complete diagram of the paper roll locations. *How many rolls of paper can be accessed by a forklift?*
 
+[Puzzle Input](./input)
+
 [Part 1 puzzle answer](#part-1-puzzle-answer)
 
 ## --- Part Two ---
