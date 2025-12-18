@@ -101,7 +101,63 @@ Using password method 0x434C49434B, what is the password to open the door?
   
   
 ## Part 1 Work
+
+This is an attempt at efficiently counting the zero's it stops on. It works fine.
+It can be improved by dividing by 100 instead of incrementing/decrementing.
+```python
+
+with open("input", "r") as f:
+    zero_count = 0
+    curr = 50
+
+    for l in f:
+        if l[0].lower() == "l":
+            curr -= int(l[1:])
+        elif l[0].lower() == "r":
+            curr += int(l[1:])
+        while curr > 99 or curr < 0:
+            if curr > 99:
+                curr -= 100
+            elif curr < 0:
+                curr += 100
+        if curr == 0:
+            zero_count += 1
+
+print(zero_count)
+```
   
+## Part 2 Work
+
+I couldn't find a good formula or simplified logic that could capture all the zero's that are passed on by the lock, so I had to go back to the basic brute force method. It was simple enough.
+
+```python
+filename = "input"
+zero_count = 0
+with open(filename, "r") as f:
+    curr = 50
+    for l in f:
+        op = 0
+        if l[0].lower() == "l":
+            op = 0 - int(l[1:])
+        elif l[0].lower() == "r":
+            op = int(l[1:])
+
+        while op != 0:
+            if op > 0:
+                curr += 1
+                op -= 1
+            elif op < 0:
+                curr -= 1
+                op += 1
+            if curr == 0 or curr == 100:
+                zero_count += 1
+            if curr == -1:
+                curr = 99
+            if curr == 100:
+                curr = 0
+
+print(zero_count)
+```
   
   
   
@@ -128,8 +184,8 @@ Using password method 0x434C49434B, what is the password to open the door?
   
 ##### Part 1 puzzle answer 
 
-Your puzzle answer was 1182.
+The puzzle answer was 1182.
 
 ##### Part 2 puzzle answer
 
-Your puzzle answer was 6907.
+The puzzle answer was 6907.
