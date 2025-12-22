@@ -1,7 +1,11 @@
 import math
 
+
 def findDistance(a, b):
-    return math.sqrt(abs(a[0] - b[0])**2 + abs(a[1] - b[1])**2 + abs(a[2] - b[2])**2)
+    return math.sqrt(
+        abs(a[0] - b[0]) ** 2 + abs(a[1] - b[1]) ** 2 + abs(a[2] - b[2]) ** 2
+    )
+
 
 def isInCircuit(box, circuit):
     box = tuple(box)
@@ -10,15 +14,17 @@ def isInCircuit(box, circuit):
             return True
     return False
 
+
 def product(lst):
     result = 1
     for x in lst:
         result *= x
     return result
 
-with open("testinput", 'r') as f:
+
+with open("input", "r") as f:
     line = list(map(str.strip, f.read().strip().splitlines()))
-    boxes = [tuple(map(int, list(x))) for x in [x.split(',') for x in line]]
+    boxes = [tuple(map(int, list(x))) for x in [x.split(",") for x in line]]
     unconnected_boxes = boxes.copy()
     connections = []
     circuits = []
@@ -33,7 +39,7 @@ with open("testinput", 'r') as f:
 
     # Process distances
     count = 0
-    stop_after = 10
+    stop_after = 1000
     for d in distances:
         count += 1
         box_a, box_b, dist = d
@@ -49,9 +55,14 @@ with open("testinput", 'r') as f:
             connections.append((box_a, box_b, dist))
             for circuit in circuits:
                 if isInCircuit(box_a, circuit) or isInCircuit(box_b, circuit):
+                    if isInCircuit(box_a, circuit):
+                        unconnected_boxes.remove(box_b)
+                    else:
+                        unconnected_boxes.remove(box_a)
                     circuit.add(box_a)
                     circuit.add(box_b)
                     break
+
         # Both boxes are already connected
         else:
             circuit_a = None
@@ -64,18 +75,18 @@ with open("testinput", 'r') as f:
                 if circuit_a is not None and circuit_b is not None:
                     break
             # Merge circuits if they are different
-            if circuit_a is not None and circuit_b is not None and circuit_a != circuit_b:
+            if circuit_a != circuit_b:
                 connections.append((box_a, box_b, dist))
                 circuit_a.update(circuit_b)
                 circuits.remove(circuit_b)
 
-        if len(connections) >= stop_after:
+        if count >= stop_after:
             break
 
     lengths = []
     for circuit in circuits:
         lengths.append(len(circuit))
-    print("Circuit lengths:", lengths)
+    # print("Circuit lengths:", lengths)
     lengths.sort()
-    print(lengths[-3:])
+    # print(lengths[-3:])
     print(product(lengths[-3:]))
