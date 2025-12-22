@@ -33,9 +33,9 @@ Each problem has 2 parts. The second part adds a bit of a twist, usually making 
 - [Problem 5 Work and Solution](./5/README.md) 
 - [Problem 6 Work and Solution](./6/README.md) 
 - [Problem 7 Work and Solution](./7/README.md) 
+- [Problem 8 Work and Solution](./8/README.md) 
 
 ### WIP
-- [Problem 8 Work and Solution](./8/README.md) 
 - [Problem 9 Work and Solution](./9/README.md) 
 - [Problem 10 Work and Solution](./10/README.md) 
 - [Problem 11 Work and Solution](./11/README.md) 
